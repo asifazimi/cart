@@ -1,4 +1,4 @@
-export default [
+const CartData = [
   {
     id: 1,
     title: "Samsung Galaxy S7",
@@ -21,3 +21,5 @@ export default [
     amount: 1,
   },
 ];
+
+export default CartData;
