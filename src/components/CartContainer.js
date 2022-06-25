@@ -5,7 +5,7 @@ import { useGlobalContext } from "../context";
 import CartItem from "./CartItem";
 
 const CartContainer = () => {
-  const { cart, setCart } = useGlobalContext();
+  const { cart, total, clearItems } = useGlobalContext();
 
   if (cart.length === 0) {
     return (
@@ -20,9 +20,9 @@ const CartContainer = () => {
   }
 
   //   remove cartItems
-  const removeCartItems = () => {
-    setCart([]);
-  };
+  // const removeCartItems = () => {
+  //   setCart([]);
+  // };
 
   return (
     <section className="cart">
@@ -41,10 +41,10 @@ const CartContainer = () => {
         <hr />
         <div className="cart-total">
           <h4>
-            total <span>$0.00</span>
+            total <span>${total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={removeCartItems}>
+        <button className="btn clear-btn" onClick={clearItems}>
           clear item
         </button>
       </footer>

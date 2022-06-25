@@ -2,13 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../context";
 
 const CartItem = ({ id, title, price, img, amount }) => {
-  const { cart, setCart } = useGlobalContext();
-
-  //   remove cartItem
-  const removeCartItem = () => {
-    const removedItem = cart.filter((item) => item.id !== id);
-    setCart(removedItem);
-  };
+  const { remove, increase, decrease } = useGlobalContext();
 
   return (
     <article className="cart-item">
@@ -17,7 +11,7 @@ const CartItem = ({ id, title, price, img, amount }) => {
         <h4>{title}</h4>
         <h4 className="item-price">{price}</h4>
         {/* remove button */}
-        <button className="remove-btn" onClick={removeCartItem}>
+        <button className="remove-btn" onClick={() => remove(id)}>
           remove
         </button>
       </div>
@@ -26,7 +20,7 @@ const CartItem = ({ id, title, price, img, amount }) => {
         <button
           className="amount-btn"
           onClick={() => {
-            console.log("increase amount");
+            increase(id);
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -39,7 +33,7 @@ const CartItem = ({ id, title, price, img, amount }) => {
         <button
           className="amount-btn"
           onClick={() => {
-            console.log("decrease amount");
+            decrease(id);
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

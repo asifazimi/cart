@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
 
 function App() {
-  const { isLoading, cart, setIsLoading } = useGlobalContext();
+  const { isLoading } = useGlobalContext();
 
   if (isLoading) {
     return (
