@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 import React from "react";
 import { useGlobalContext } from "./context";
 // components
