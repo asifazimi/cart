@@ -82,7 +82,7 @@ const reducer = (state, action) => {
     }
 
     default:
-      return state;
+      throw new Error("no Matching action type");
   }
 };
 

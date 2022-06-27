@@ -25,14 +25,9 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "REMOVE", payload: id });
   };
 
-  // Increase cart
-  const increase = (id) => {
-    dispatch({ type: "INCREASE", payload: id });
-  };
-
-  // Decrease cart
-  const decrease = (id) => {
-    dispatch({ type: "DECREASE", payload: id });
+  // Increase and Decrease the amount of each items
+  const toggleAmount = (id, type) => {
+    dispatch({ type: "TOGGLE_AMOUNT", payload: { id, type } });
   };
 
   // Fetch the data from the API
@@ -41,10 +36,6 @@ export const AppProvider = ({ children }) => {
     const response = await fetch(url);
     const cart = await response.json();
     dispatch({ type: "DISPLAY_ITEMS", payload: cart });
-  };
-
-  const toggleAmount = (id, type) => {
-    dispatch({ type: "TOGGLE_AMOUNT", payload: { id, type } });
   };
 
   useEffect(() => {
@@ -56,9 +47,7 @@ export const AppProvider = ({ children }) => {
   }, [state.cart]);
 
   return (
-    <MyContext.Provider
-      value={{ ...state, clearItems, remove, increase, decrease, toggleAmount }}
-    >
+    <MyContext.Provider value={{ ...state, clearItems, remove, toggleAmount }}>
       {children}
     </MyContext.Provider>
   );
